@@ -6,6 +6,15 @@ from string import ascii_uppercase
 import os 
 
 app = Flask(__name__)
+
+ENV = ""
+
+if ENV == "dev":
+    app.debug = True
+else:
+    app.debug = False
+
+
 app.config["SECRET_KEY"] = os.environ.get('BBC_ENV_KEY')
 socketio = SocketIO(app)
 
